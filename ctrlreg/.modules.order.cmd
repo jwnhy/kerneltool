@@ -1,0 +1,1 @@
+cmd_/home/john/documents/kerneltool/ctrlreg/modules.order := {   echo /home/john/documents/kerneltool/ctrlreg/ctrlreg.ko; :; } | awk '!x[$$0]++' - > /home/john/documents/kerneltool/ctrlreg/modules.order

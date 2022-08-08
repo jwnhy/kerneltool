@@ -1,0 +1,1 @@
+cmd_/home/john/documents/kerneltool/ctrlreg/Module.symvers := sed 's/\.ko$$/\.o/' /home/john/documents/kerneltool/ctrlreg/modules.order | scripts/mod/modpost    -o /home/john/documents/kerneltool/ctrlreg/Module.symvers -e -i Module.symvers   -T -

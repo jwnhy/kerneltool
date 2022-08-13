@@ -1,7 +1,4 @@
-#define pr_fmt(fmt) "kernel_hook: " fmt
-
 #include "kooh.h"
-
 
 
 /*

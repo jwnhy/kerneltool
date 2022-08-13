@@ -11,9 +11,6 @@
 #include <linux/kprobes.h>
 #include <linux/kallsyms.h>
 
-MODULE_DESCRIPTION("Kernel Module Hooking via ftrace");
-MODULE_AUTHOR("jwnhy <jwnhy0@gmail.com");
-MODULE_LICENSE("GPL");
 
 /*
  * struct ftrace_hook - describe a hook.

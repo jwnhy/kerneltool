@@ -1,5 +1,10 @@
 #include "kooh.h"
 #include <linux/bpf.h>
+
+MODULE_DESCRIPTION("Kernel Module Hooking via ftrace");
+MODULE_AUTHOR("jwnhy <jwnhy0@gmail.com");
+MODULE_LICENSE("GPL");
+
 static long (*real_bpf_prog_run)(u64 *regs, const struct bpf_insn *insn);
 
 static long kh_bpf_prog_run(u64 *regs, const struct bpf_insn *insn)

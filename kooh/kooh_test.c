@@ -1,14 +1,14 @@
 #include "kooh.h"
+#include <linux/bpf.h>
+static long (*real_bpf_prog_run)(u64 *regs, const struct bpf_insn *insn);
 
-static asmlinkage long (*real_sys_clone)(struct pt_regs *regs);
-
-static asmlinkage long fh_sys_clone(struct pt_regs *regs)
+static long kh_bpf_prog_run(u64 *regs, const struct bpf_insn *insn)
 {
 	long ret;
 
 	pr_info("bpf() before\n");
 
-	ret = real_sys_clone(regs);
+	ret = real_bpf_prog_run(regs, insn);
 
 	pr_info("bpf() after: %ld\n", ret);
 
@@ -16,7 +16,7 @@ static asmlinkage long fh_sys_clone(struct pt_regs *regs)
 }
 
 static struct ftrace_hook test_hooks[] = {
-  { "__x64_sys_bpf", fh_sys_clone, &real_sys_clone },
+  { "___bpf_prog_run", kh_bpf_prog_run, &real_bpf_prog_run},
 };
 
 

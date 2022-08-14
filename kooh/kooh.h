@@ -41,6 +41,8 @@ int kh_install_hooks(struct ftrace_hook* hook, size_t count);
 void kh_remove_hook(struct ftrace_hook* hook);
 void kh_remove_hooks(struct ftrace_hook* hook, size_t count);
 
+unsigned long lookup_name(const char *name);
+
 #ifndef CONFIG_X86_64
 #error Only x86_64 is supported
 #endif

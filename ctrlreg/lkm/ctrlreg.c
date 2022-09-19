@@ -16,7 +16,6 @@
 #include <linux/gfp.h>
 #include <asm/processor.h>
 #include <asm/msr.h>
-#include <asm/fpu/internal.h>
 
 #define MAKE_MINOR(cpu, reg) (cpu<<8 | reg)
 #define GET_MINOR_REG(minor) (minor & 0xff)
@@ -48,7 +47,6 @@ static void ctrlreg_smp_do_read(void* p)
         case 3: info->value = native_read_cr3_pa(); break;
         case 4: info->value = native_read_cr4(); break;
 
-        case XCR_MINOR_BASE: info->value = xgetbv(0); break;
 
         default:
             info->error =  -EINVAL;
@@ -68,7 +66,6 @@ static void ctrlreg_smp_do_write(void* p)
         #ifdef CONFIG_LKTDM
         case 4: native_write_cr4(info->value); break;
         #endif
-        case XCR_MINOR_BASE: xgetbv(0); break;
 
         default:
             info->error =  -EINVAL;

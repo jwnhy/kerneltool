@@ -1,2 +1,1 @@
-/home/john/documents/kerneltool/ctrlreg/ctrlreg.o
-
+/home/john/documents/kerneltool/ctrlreg/lkm/ctrlreg.o
